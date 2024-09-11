@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando em Janelas</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class=" detalhe">
+        <img src="./background.jpg" alt = "background">
+    </div>
+
+    <div class="formulario">
+        <h1>Cálculo de IMC</h1>
+        <span name="calculado"> 00 </span>
+        <input type="number" name="massa" placeholder="Kg">
+        <input type ="number" name="altura" placeholder="m">
+
+        <button onclick="Calcular()"> calcular </button>
+
+
+    </div>
+
+    <div class="formulario">
+        <h1>Transformar Graus Celsius em Fahreinheit</h1>
+        <span name="transformado"></span>
+        <input type="number" name="temperatura" placeholder="temperatura">
+        
+
+        <button onclick="TransformarCelsius()"> Transformar para Celsius </button>
+        <button onclick="TransformarFahreinheit()"> Transformar para Fahreinheit </button>
+
+
+    </div>
+
+    <div class = "formulario">
+        <h1>conversão Centrimetro-Polegadas</h1>
+
+        <input type="number" name="centimetro" placeholder="cm">
+        <input type="number" name="polegadas" placeholder="in">
+        
+    </div>
+
+    <script>
+        const entradaMassa = document.querySelector("[name=massa]")
+        const entradaAltura = document.querySelector("[name=altura]")
+
+        const saidaCalculo = document.querySelector("[name=calculado]")
+
+        function Calcular() {
+            const valorAltura = parseFloat(entradaAltura.value)
+            const valorMassa = parseFloat(entradaMassa.value)
+
+            const resultado = valorMassa / (valorAltura * valorAltura)
+
+            if (resultado)
+                saidaCalculo.innerHTML = resultado
+        }
+    </script>
+
+    <script>
+        const entradaTemperatura = document.querySelector("[name=temperatura]")
+        const saidaTemperatura = document.querySelector("[trasformado]")
+
+        function TransformarFahreinheit () {
+            const valorTemperatura = parseFloat(entradaTemperatura.value)
+
+            if(valorTemperatura) {
+                const resultado = (valorTemperatura * (9 / 5)) + 32
+
+                saidaTemperatura.innerHTML = resultado + "°F"
+            }
+        }
+        function TransformarCelsius () {
+            const valorTemperatura = parseFloat(entradaTemperatura.value)
+            if(valorTemperatura) {
+                const resultado = (valorTemperatura -32 ) * (5 / 9)  
+
+                saidaTemperatura.innerHTML = resultado + "°C"
+            }
+        }
+    </script>
+</body>
+</html>
