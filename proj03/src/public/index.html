@@ -39,7 +39,7 @@
 
         <input type="number" name="centimetro" placeholder="cm">
         <input type="number" name="polegadas" placeholder="in">
-        
+
     </div>
 
     <script>
@@ -57,9 +57,7 @@
             if (resultado)
                 saidaCalculo.innerHTML = resultado
         }
-    </script>
-
-    <script>
+    
         const entradaTemperatura = document.querySelector("[name=temperatura]")
         const saidaTemperatura = document.querySelector("[trasformado]")
 
@@ -80,6 +78,21 @@
                 saidaTemperatura.innerHTML = resultado + "°C"
             }
         }
+        
+        const entradaCentimetro = document.querySelector("[name=centimetro]")
+        const entradaPolegada = document.querySelector("[name=polegadas]")
+
+        entradaCentimetro.addEventListener("input", function(evento){
+            const valorCentimetro = parseFloat (evento.target.value)
+            console.log(valorCentimetro)
+            entradaPolegada.value = valorCentimetro / 2.54
+        })
+
+        entradaPolegada.addEventListener("input", function(evento){
+            const valorPolegada = parseFloat(evento.target.value)
+
+            entradaCentimetro.value = valorPolegada * 2.54
+        })
     </script>
 </body>
 </html>
