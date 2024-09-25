@@ -19,6 +19,35 @@
     <script>
         const audio = document.querySelector("audio")
         const entrada = document.querySelector("input")
+        const faixas = document.querySelector("div.janela-faixas")
+        const arquivos = new Array()
+
+        entrada.addEventListener("change", function(){
+            for (var dado of entrada.files) {
+                const nome = dado.name
+                const  endereco = URL.createObjectURL(dado)
+                arquivos.push({nome, endereco})
+            }
+            Apresentar()
+
+        })
+
+        function Apresentar() {
+            faixas.innerHTML = ""
+
+            arquivos.forEach(function(arquivo, indice){
+                const musica = document.createElement("div")
+                musica.setAttribute("class", "faixa")
+                musica.setAttribute("onclick", `Tocar(${indice})`)
+                musica.innerHTML = arquivo.nome
+                faixas.appendChild(musica)
+            })
+
+       
+        }
+        function Tocar(indice) {
+            audio.setAttribute("src", arquivos[indice].aendereco)   
+        }
     </script>
 </body>
 </html>
